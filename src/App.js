@@ -47,6 +47,7 @@ export default function App() {
       const timer = setInterval(() => {
         setSeconds((s) => s + 1);
       }, 5000);
+
       setWeather(weather);
       console.log(weather);
       // cleanup function
@@ -54,8 +55,8 @@ export default function App() {
         clearInterval(timer);
       };
     }, []);
-
-    return;
+    //  Timer(seconds);
+    // return;
   }
 
   const [activity, setActivity] = useLocalStorageState("activity", {
