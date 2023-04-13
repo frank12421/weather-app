@@ -5,6 +5,10 @@ export default function Form({ onAddActivity }) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
+
+    data.WeatherActivity === "on"
+      ? (data.WeatherActivity = true)
+      : (data.WeatherActivity = false);
     onAddActivity(data);
     console.log("Form:", data);
     event.target.reset();
