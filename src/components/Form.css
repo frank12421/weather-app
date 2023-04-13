@@ -1,0 +1,42 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 5%;
+  gap: 10px;
+}
+
+.form-feld {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
+  gap: 10px;
+}
+
+.form-active {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.button {
+  margin-top: 20px;
+  align-self: center;
+  padding: 10px 50px 10px 50px;
+  font-size: large;
+  font-weight: bold;
+  background-color: aqua;
+  border: none;
+  border-radius: 5px;
+}
+
+.input-name {
+  padding: 5px;
+}
+
+.checkbox {
+  padding: 5px;
+}
