@@ -10,7 +10,6 @@ export default function Form({ onAddActivity }) {
       ? (data.WeatherActivity = true)
       : (data.WeatherActivity = false);
     onAddActivity(data);
-    console.log("Form:", data);
     event.target.reset();
     event.target.elements.name.focus();
   }

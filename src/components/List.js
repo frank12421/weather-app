@@ -13,7 +13,7 @@ export default function List({ activitys, onDeleteActivity }) {
             className="button-delete-activity"
             type="button"
           >
-            löschen
+            X
           </button>
         </li>
       ))}
