@@ -1,6 +1,5 @@
 import "./App.css";
 import Form from "./components/Form.js";
-
 import { uid } from "uid";
 import List from "./components/List";
 import useLocalStorageState from "use-local-storage-state";
@@ -9,19 +8,21 @@ const initialActivtis = [
   {
     id: "28djdh72",
     name: "Reading inside",
-    isForGoodWeather: false,
+    WeatherActivity: false,
   },
   {
     id: "dknseu2",
     name: "Go for a walk",
-    isForGoodWeather: true,
+    WeatherActivity: true,
   },
   {
     id: "dkwi02ksk",
     name: "Have a veagan barbecue",
-    isForGoodWeather: true,
+    WeatherActivity: true,
   },
 ];
+
+const isGoodWeather = true;
 
 export default function App() {
   // const [activity, setActivity] = useState(initialActivtis);
@@ -43,7 +44,12 @@ export default function App() {
 
   return (
     <div className="App">
-      <List activitys={activity} onDeleteActivity={onDeleteActivity} />
+      <List
+        activitys={activity.filter((activity) => {
+          return activity.WeatherActivity === isGoodWeather;
+        })}
+        onDeleteActivity={onDeleteActivity}
+      />
       <h1>Add New Activity:</h1>
       <Form onAddActivity={handelActivity} />
     </div>
