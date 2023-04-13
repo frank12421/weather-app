@@ -32,9 +32,13 @@ export default function App() {
     console.log("App_", newActivity);
   }
 
+  function onDeleteActivity(id) {
+    setActivity(activity.filter((activity) => activity.id !== id));
+  }
+
   return (
     <div className="App">
-      <List activitys={activity} />
+      <List activitys={activity} onDeleteActivity={onDeleteActivity} />
       <h1>Add New Activity:</h1>
       <Form onAddActivity={handelActivity} />
     </div>
