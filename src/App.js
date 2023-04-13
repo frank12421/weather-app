@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Form from "./components/Form.js";
+
+const initialActivtis = [
+  {
+    id: "28djdh72",
+    name: "Reading inside",
+    isForGoodWeather: false,
+  },
+  {
+    id: "dknseu2",
+    name: "Go for a walk",
+    isForGoodWeather: true,
+  },
+  {
+    id: "dkwi02ksk",
+    name: "Have a veagan barbecue",
+    isForGoodWeather: true,
+  },
+];
 
 function App() {
+  function handelActivity(newActivity) {
+    console.log("App_", newActivity);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Add New Activity:</h1>
+      <Form onAddActivity={handelActivity} />
     </div>
   );
 }
