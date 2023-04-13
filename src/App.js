@@ -3,6 +3,7 @@ import Form from "./components/Form.js";
 import { uid } from "uid";
 import List from "./components/List";
 import useLocalStorageState from "use-local-storage-state";
+import { useState } from "react";
 
 const initialActivtis = [
   {
@@ -22,20 +23,26 @@ const initialActivtis = [
   },
 ];
 
-const isGoodWeather = true;
-
 export default function App() {
   // const [activity, setActivity] = useState(initialActivtis);
+
+  const [weather, setWeather] = useState(fetchWeather);
+
+  async function fetchWeather() {
+    const response = await fetch("https://example-apis.vercel.app/api/weather");
+    const data = await response.json();
+
+    setWeather(data);
+  }
+
+  console.log(weather);
 
   const [activity, setActivity] = useLocalStorageState("activity", {
     defaultValue: initialActivtis,
   });
 
-  console.log("Hier:", initialActivtis);
-
   function handelActivity(newActivity) {
     setActivity([...activity, { id: uid(), ...newActivity }]);
-    console.log("App_", newActivity);
   }
 
   function onDeleteActivity(id) {
@@ -44,9 +51,18 @@ export default function App() {
 
   return (
     <div className="App">
+      <div className="weather-header">
+        <h3 className="weather-condition">{weather.condition}</h3>
+        <h3 className="weather-temperature">{weather.temperature} °C</h3>
+      </div>
+      {weather.isGoodWeather ? (
+        <div>The weather is awesome! Go outside and:</div>
+      ) : (
+        <div>Bad weather outside! Here's what you can do now:</div>
+      )}
       <List
         activitys={activity.filter((activity) => {
-          return activity.WeatherActivity === isGoodWeather;
+          return activity.WeatherActivity === weather.isGoodWeather;
         })}
         onDeleteActivity={onDeleteActivity}
       />
