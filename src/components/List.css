@@ -1,0 +1,22 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  padding: 5%;
+  list-style: none;
+}
+
+li {
+  background-color: gray;
+  padding: 10px;
+  text-align: left;
+  color: aliceblue;
+  border-radius: 5px;
+}
+
+h1 {
+  font-size: 20px;
+  text-align: left;
+  padding: 5%;
+}

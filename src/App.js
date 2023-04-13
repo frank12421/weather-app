@@ -2,6 +2,7 @@ import "./App.css";
 import Form from "./components/Form.js";
 import { useState } from "react";
 import { uid } from "uid";
+import List from "./components/List";
 
 const initialActivtis = [
   {
@@ -33,6 +34,7 @@ export default function App() {
 
   return (
     <div className="App">
+      <List activitys={activity} />
       <h1>Add New Activity:</h1>
       <Form onAddActivity={handelActivity} />
     </div>
