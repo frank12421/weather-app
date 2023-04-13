@@ -1,5 +1,7 @@
 import "./App.css";
 import Form from "./components/Form.js";
+import { useState } from "react";
+import { uid } from "uid";
 
 const initialActivtis = [
   {
@@ -19,8 +21,13 @@ const initialActivtis = [
   },
 ];
 
-function App() {
+export default function App() {
+  const [activity, setActivity] = useState(initialActivtis);
+
+  console.log(initialActivtis);
+
   function handelActivity(newActivity) {
+    setActivity([...activity, { id: uid(), ...newActivity }]);
     console.log("App_", newActivity);
   }
 
@@ -31,5 +38,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
