@@ -25,39 +25,26 @@ const initialActivtis = [
 
 export default function App() {
   // const [activity, setActivity] = useState(initialActivtis);
-
   const [weather, setWeather] = useState([]);
 
-  useEffect(() => {
-    async function fetchWeather() {
-      const response = await fetch(
-        "https://example-apis.vercel.app/api/weather"
-      );
-      const data = await response.json();
+  async function fetchWeather() {
+    const response = await fetch("https://example-apis.vercel.app/api/weather");
+    const data = await response.json();
 
-      setWeather(data);
-    }
-    fetchWeather();
-  }, []);
-
-  function Timer() {
-    const [seconds, setSeconds] = useState(0);
-
-    useEffect(() => {
-      const timer = setInterval(() => {
-        setSeconds((s) => s + 1);
-      }, 5000);
-
-      setWeather(weather);
-      console.log(weather);
-      // cleanup function
-      return () => {
-        clearInterval(timer);
-      };
-    }, []);
-    //  Timer(seconds);
-    // return;
+    setWeather(data);
   }
+
+  useEffect(() => {
+    fetchWeather();
+    const timer = setInterval(() => {
+      fetchWeather();
+    }, 5000);
+
+    // cleanup function
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
 
   const [activity, setActivity] = useLocalStorageState("activity", {
     defaultValue: initialActivtis,
