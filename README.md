@@ -1,4 +1,16 @@
-# Getting Started with Create React App
+### Created by Frank and Calle on April 13, 2023 in 7 hours pair programming.
+
+To run the code locally enter the following commands:
+
+### npm i
+
+### npm run start
+
+### npm install use-local-storage-state
+
+# Have fun :)
+
+### Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
